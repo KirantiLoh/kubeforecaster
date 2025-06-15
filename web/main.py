@@ -117,7 +117,6 @@ async def predict(data: PredictionBody):
             inputs = preprocessor.transform(cpu_loads, memory_loads)  # Shape: (1, 5, 16)
             
             model.eval()
-            print(inputs)
             with torch.inference_mode():
                 output = model(inputs.permute(0, 2, 1)).squeeze().tolist() 
             
